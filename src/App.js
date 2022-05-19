@@ -4,6 +4,7 @@ import alanBtn from '@alan-ai/alan-sdk-web';
 import { useEffect,useLayoutEffect,useState } from 'react';
 import NewsCards from './Components/NewsCards';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import wordsToNumbers from 'words-to-numbers';
 
 
 
@@ -21,6 +22,7 @@ function App() {
   const alanKey='35a28769d641e07e4ce81aa6fa7467f42e956eca572e1d8b807a3e2338fdd0dc/stage'
 
   const [newsArticles,setNewsArticles] =useState([]);
+  const [activeArticle, setActiveArticle] = useState(-1);
 
 
   useLayoutEffect(()=>{
@@ -29,10 +31,26 @@ function App() {
     function updateScreen(time) {
     alanBtn({
       key:alanKey,
-      onCommand:({command,articles})=>{
+      onCommand:({command,articles,number})=>{
         if(command === 'newsHeadlines'){
           console.log(articles)
          setNewsArticles(articles);
+        }else if(command==='highlight'){
+              setActiveArticle((preActiveArticle)=>preActiveArticle+1);
+          
+        }else if(command==='open'){
+          const parsedNumber = number.length > 2 ? wordsToNumbers((number), { fuzzy: true }) : number;
+          const article = articles[parsedNumber - 1];
+     
+          if (parsedNumber > articles.length) {
+            alanBtn().playText('Please try that again...');
+          } else if (article) {
+            window.open(article.url, '_blank');
+            alanBtn().playText('Opening...');
+          } else {
+            alanBtn().playText('Please try that again...');
+          }
+
         }
       }
     });
@@ -44,7 +62,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <div className="App">
      
-     <NewsCards articles={newsArticles}/>
+     <NewsCards articles={newsArticles} activeArticle={activeArticle}/>
     </div>
     </ThemeProvider>
   );
