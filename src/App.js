@@ -1,32 +1,52 @@
 
 import './App.css';
 import alanBtn from '@alan-ai/alan-sdk-web';
-import { useEffect,useState } from 'react';
-import NewsCards from './Components/Newscards';
+import { useEffect,useLayoutEffect,useState } from 'react';
+import NewsCards from './Components/NewsCards';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
 
-const alanKey='35a28769d641e07e4ce81aa6fa7467f42e956eca572e1d8b807a3e2338fdd0dc/stage'
+const theme = createTheme({
+  palette: {
+    secondary: {
+      main: "#FFFF00",
+    },
+  },
+});
 
 function App() {
 
-  const [articles,setArticles] =useState([]);
+  
+  const alanKey='35a28769d641e07e4ce81aa6fa7467f42e956eca572e1d8b807a3e2338fdd0dc/stage'
+
+  const [newsArticles,setNewsArticles] =useState([]);
 
 
-  useEffect(()=>{
+  useLayoutEffect(()=>{
+
+    
+    function updateScreen(time) {
     alanBtn({
       key:alanKey,
       onCommand:({command,articles})=>{
         if(command === 'newsHeadlines'){
-         setArticles(articles);
+          console.log(articles)
+         setNewsArticles(articles);
         }
       }
-    })
-  },[])
+    });
+  }
+  requestAnimationFrame(updateScreen);
+  },[]);
+
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
-     <NewsCards articles={articles}/>
+     
+     <NewsCards articles={newsArticles}/>
     </div>
+    </ThemeProvider>
   );
 }
 
