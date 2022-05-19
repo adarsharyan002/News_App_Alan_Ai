@@ -61,6 +61,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <div className="App">
+      <h1>News App</h1>
      
      <NewsCards articles={newsArticles} activeArticle={activeArticle}/>
     </div>
