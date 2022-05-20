@@ -4,7 +4,7 @@ import NewsCard from './NewsCard/NewsCard';
 import { makeStyles } from '@mui/styles';
 
 
-
+//styles mui elements
 const useStyles=makeStyles((theme)=>{
     return{
         card: {
@@ -30,6 +30,7 @@ const useStyles=makeStyles((theme)=>{
 })
 
 
+//data for dashobard cards
 const infoCards = [
     { color: '#00838f', title: 'Latest News', text: 'What\'s the latest news' },
     { color: '#1565c0', title: 'News by Categories', info: 'Business, Entertainment, General, Health, Science, Sports, Technology', text: 'Give me the latest Technology news' },

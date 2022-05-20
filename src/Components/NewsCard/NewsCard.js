@@ -4,6 +4,8 @@ import { Card, CardActions, CardActionArea, CardContent, CardMedia, Button, Typo
 
 import classNames from 'classnames';
 
+
+//styles for mui components
 const useStyles=makeStyles((theme)=>{
     return{
         media: {
@@ -53,6 +55,8 @@ const NewsCard = ({ article: { description, publishedAt, source, title, url, url
     const classes=useStyles();
 
     const [elRefs, setElRefs] = useState([]);
+
+    //handling scroll starts
     const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 50);
 
     useEffect(() => {
@@ -66,6 +70,8 @@ const NewsCard = ({ article: { description, publishedAt, source, title, url, url
           scrollToRef(elRefs[activeArticle]);
         }
       }, [i, activeArticle, elRefs]);
+
+      //end
 
     return ( 
         <Card ref={elRefs[i]} className={classNames(classes.card,activeArticle===i?classes.activeCard:null)}>

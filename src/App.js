@@ -25,7 +25,7 @@ function App() {
 
   const [newsArticles,setNewsArticles] =useState([]);
   const [activeArticle, setActiveArticle] = useState(-1);
-  
+
 
 //Alan Button
   useLayoutEffect(()=>{
@@ -69,8 +69,7 @@ function App() {
       <h1 style={{color:'blue'}}>News App</h1>
       <p>Click on the mic button to begin</p>
       </div>
-     
-     
+      
      <NewsCards articles={newsArticles} activeArticle={activeArticle}/>
     </div>
     </ThemeProvider>
