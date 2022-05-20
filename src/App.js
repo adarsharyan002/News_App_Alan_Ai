@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import wordsToNumbers from 'words-to-numbers';
 
 
-
+//custom-theme
 const theme = createTheme({
   palette: {
     secondary: {
@@ -16,6 +16,8 @@ const theme = createTheme({
   },
 });
 
+
+
 function App() {
 
   
@@ -23,8 +25,9 @@ function App() {
 
   const [newsArticles,setNewsArticles] =useState([]);
   const [activeArticle, setActiveArticle] = useState(-1);
+  
 
-
+//Alan Button
   useLayoutEffect(()=>{
 
     
@@ -57,6 +60,7 @@ function App() {
   }
   requestAnimationFrame(updateScreen);
   },[]);
+
 
   return (
     <ThemeProvider theme={theme}>
