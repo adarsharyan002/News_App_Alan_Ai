@@ -1,7 +1,7 @@
 
 import './App.css';
 import alanBtn from '@alan-ai/alan-sdk-web';
-import { useEffect,useLayoutEffect,useState } from 'react';
+import { useLayoutEffect,useState } from 'react';
 import NewsCards from './Components/NewsCards';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import wordsToNumbers from 'words-to-numbers';
@@ -61,7 +61,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <div className="App">
-      <h1>News App</h1>
+      <div style={{display:'flex',flexDirection:'column' ,justifyContent:'center',alignItems:'center'}} className="title">
+      <h1 style={{color:'blue'}}>News App</h1>
+      <p>Click on the mic button to begin</p>
+      </div>
+     
      
      <NewsCards articles={newsArticles} activeArticle={activeArticle}/>
     </div>

@@ -1,7 +1,5 @@
 import React from 'react';
 import { Grid, Grow,Typography} from '@mui/material';
-
-
 import NewsCard from './NewsCard/NewsCard';
 import { makeStyles } from '@mui/styles';
 
@@ -19,6 +17,8 @@ const useStyles=makeStyles((theme)=>{
             padding: '10%',
             borderRadius: 10,
             color: 'white',
+            
+            boxShadow:  '-5px 5px 10px #bdbdbd,5px -5px 10px #ffffff',
           },
           infoCard: {
             display: 'flex', flexDirection: 'column', textAlign: 'center',

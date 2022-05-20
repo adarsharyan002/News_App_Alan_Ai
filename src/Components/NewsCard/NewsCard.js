@@ -20,6 +20,9 @@ const useStyles=makeStyles((theme)=>{
             flexDirection: 'column',
             justifyContent: 'space-between',
             borderBottom: '10px solid white',
+            
+
+      
           },
           activeCard: {
             borderBottom: '10px solid #22289a',
